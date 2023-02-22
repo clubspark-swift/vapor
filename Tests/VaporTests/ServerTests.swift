@@ -737,7 +737,7 @@ final class ServerTests: XCTestCase {
                                                                 body: .byteBuffer(tenMB),
                                                                 deadline: .now() + .milliseconds(100)).wait()) { error in
             if let error = error as? HTTPClientError {
-                XCTAssert(error == .readTimeout || error == .deadlineExceeded)
+                XCTAssert(error == .readTimeout)// || error == .deadlineExceeded)
             } else {
                 XCTFail("unexpected error: \(error)")
             }
@@ -822,7 +822,7 @@ final class ServerTests: XCTestCase {
                                                                 delegate: delegate,
                                                                 deadline: .now() + .milliseconds(500)).wait()) { error in
             if let error = error as? HTTPClientError {
-                XCTAssert(error == .readTimeout || error == .deadlineExceeded)
+                XCTAssert(error == .readTimeout)// || error == .deadlineExceeded)
             } else {
                 XCTFail("unexpected error: \(error)")
             }
